@@ -165,7 +165,7 @@ function buildVariants(
   for (const modelId of modelIds) {
     for (const colorId of colorIds) {
       variantSeed += 1;
-      const stock = [12, 4, 0, 25, 7, 2, 18, 9][variantSeed % 8];
+      const stock = [12, 4, 0, 25, 7, 2, 18, 9][variantSeed % 8] ?? 6;
       out.push({
         id: `${productId}-${modelId}-${colorId}`,
         productId,
@@ -182,10 +182,11 @@ function buildVariants(
   return out;
 }
 
-const appleModels = phoneBrands[0].models.map((m) => m.id);
-const samsungModels = phoneBrands[1].models.map((m) => m.id);
-const xiaomiModels = phoneBrands[2].models.map((m) => m.id);
-const huaweiModels = phoneBrands[3].models.map((m) => m.id);
+const modelsOf = (brandId: string) => phoneBrands.find((b) => b.id === brandId)?.models.map((m) => m.id) ?? [];
+const appleModels = modelsOf("apple");
+const samsungModels = modelsOf("samsung");
+const xiaomiModels = modelsOf("xiaomi");
+const huaweiModels = modelsOf("huawei");
 
 type ProductSeed = Omit<Product, "variants" | "colors"> & { colorIds: string[]; modelIds: string[] };
 
@@ -525,7 +526,7 @@ const seeds: ProductSeed[] = [
 
 export const products: Product[] = seeds.map((s) => ({
   ...s,
-  colors: s.colorIds.map((id) => COLORS[id]),
+  colors: s.colorIds.map((id) => COLORS[id]!),
   variants: buildVariants(s.id, s.modelIds, s.colorIds, s.basePrice, s.compareAtPrice),
 }));
 
