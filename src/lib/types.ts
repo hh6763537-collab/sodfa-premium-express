@@ -31,12 +31,12 @@ export type ProductVariant = {
   id: string;
   productId: string;
   sku: string;
-  barcode?: string;
+  barcode?: string | undefined;
   /** phone model id, or "universal" */
   modelId: string;
   colorId: string;
   price: number;
-  compareAtPrice?: number;
+  compareAtPrice?: number | undefined;
   /** stock already filtered to the warehouses this store may sell from */
   stock: number;
 };
@@ -50,7 +50,7 @@ export type Product = {
   brandIds: string[];
   images: string[];
   basePrice: number;
-  compareAtPrice?: number;
+  compareAtPrice?: number | undefined;
   colors: ColorOption[];
   variants: ProductVariant[];
   specs: { label: Localized; value: Localized }[];
@@ -73,8 +73,8 @@ export type HeroSlide = {
   subtitle: Localized;
   cta: Localized;
   ctaLink: string;
-  secondaryCta?: Localized;
-  secondaryCtaLink?: string;
+  secondaryCta?: Localized | undefined;
+  secondaryCtaLink?: string | undefined;
   duration: number;
   active: boolean;
   sortOrder: number;
@@ -129,7 +129,7 @@ export type Order = {
   paymentMethod: PaymentMethod;
   deposit: number;
   remaining: number;
-  paymentProofName?: string;
+  paymentProofName?: string | undefined;
   paymentStatus: "awaiting_verification" | "verified";
   status: OrderStatus;
   lang: "ar" | "en";
