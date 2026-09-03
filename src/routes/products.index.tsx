@@ -6,14 +6,16 @@ import { useI18n } from "@/lib/i18n";
 import { categories, phoneBrands, searchProducts, totalStock, visibleProducts } from "@/lib/data/catalog";
 import type { Product } from "@/lib/types";
 
+type Sort = "recommended" | "priceAsc" | "priceDesc" | "newest";
+
 type Search = {
-  q?: string;
-  category?: string;
-  brand?: string;
-  model?: string;
-  sort?: "recommended" | "priceAsc" | "priceDesc" | "newest";
-  inStock?: boolean;
-  offers?: boolean;
+  q?: string | undefined;
+  category?: string | undefined;
+  brand?: string | undefined;
+  model?: string | undefined;
+  sort?: Sort | undefined;
+  inStock?: boolean | undefined;
+  offers?: boolean | undefined;
 };
 
 export const Route = createFileRoute("/products/")({
@@ -24,7 +26,7 @@ export const Route = createFileRoute("/products/")({
     ...(typeof search["model"] === "string" && search["model"] ? { model: search["model"] } : {}),
     ...(typeof search["sort"] === "string" &&
     ["recommended", "priceAsc", "priceDesc", "newest"].includes(search["sort"])
-      ? { sort: search["sort"] as Search["sort"] }
+      ? { sort: search["sort"] as Sort }
       : {}),
     ...(search["inStock"] ? { inStock: true } : {}),
     ...(search["offers"] ? { offers: true } : {}),
@@ -43,10 +45,10 @@ export const Route = createFileRoute("/products/")({
 function ProductsPage() {
   const { t, tl, lang } = useI18n();
   const search = Route.useSearch();
-  const navigate = useNavigate({ from: "/products" });
+  const navigate = useNavigate({ from: "/products/" });
 
   const setSearch = (patch: Partial<Search>) =>
-    navigate({ search: (prev) => ({ ...prev, ...patch }) as Search, replace: true });
+    navigate({ search: (prev: Search) => ({ ...prev, ...patch }), replace: true });
 
   const results = useMemo(() => {
     let list: Product[] = search.q ? searchProducts(search.q, lang) : [...visibleProducts];
@@ -139,7 +141,7 @@ function ProductsPage() {
           <select
             aria-label={t("filters.sort")}
             value={search.sort ?? "recommended"}
-            onChange={(e) => setSearch({ sort: e.target.value as Search["sort"] })}
+            onChange={(e) => setSearch({ sort: (e.target.value as Sort) })}
             className="sodfa-input h-11 rounded-xl px-3 text-sm"
           >
             <option value="recommended">{t("sort.recommended")}</option>
@@ -167,7 +169,7 @@ function ProductsPage() {
           {hasFilters && (
             <button
               type="button"
-              onClick={() => navigate({ search: {} as Search, replace: true })}
+              onClick={() => navigate({ search: () => ({}), replace: true })}
               className="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-xs font-semibold text-[var(--text-muted)] hover:text-[var(--text-primary)]"
             >
               <X className="h-3.5 w-3.5" />
