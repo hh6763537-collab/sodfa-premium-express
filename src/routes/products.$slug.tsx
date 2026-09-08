@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
-import { Check, Minus, Plus, ShieldCheck, Star, Truck } from "lucide-react";
+import { Minus, Plus, ShieldCheck, Star, Truck } from "lucide-react";
 import { toast } from "sonner";
 import { SmartImage } from "@/components/sodfa/SmartImage";
 import { ProductCard } from "@/components/sodfa/ProductCard";
@@ -273,8 +273,4 @@ function ProductPage() {
       )}
     </div>
   );
-}
-
-export function ProductChecked() {
-  return <Check />;
 }
