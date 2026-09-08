@@ -264,7 +264,7 @@
 
 @utility sodfa-badge {
   background: var(--purple-bg);
-  color: var(--sodfa-purple-light);
+  color: var(--sodfa-purple-dark);
   border: 1px solid var(--purple-border);
 }
 
