@@ -47,8 +47,8 @@ export function Header() {
       className={cn(
         "sticky top-0 z-50 w-full border-b transition-all duration-300",
         scrolled
-          ? "border-[var(--border-primary)] bg-black/80 backdrop-blur-xl"
-          : "border-transparent bg-gradient-to-b from-black to-black/40",
+          ? "border-[var(--border-primary)] bg-white/85 shadow-[var(--shadow-sm)] backdrop-blur-xl"
+          : "border-transparent bg-white/70 backdrop-blur-md",
       )}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 lg:h-20 lg:px-8">
@@ -115,7 +115,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-[var(--border-primary)] bg-black/95 px-4 pb-6 pt-4 backdrop-blur-xl lg:hidden">
+        <div className="border-t border-[var(--border-primary)] bg-white/95 px-4 pb-6 pt-4 backdrop-blur-xl lg:hidden">
           <form onSubmit={submitSearch} className="relative mb-4">
             <Search className="pointer-events-none absolute top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--text-muted)] ltr:left-3 rtl:right-3" />
             <input

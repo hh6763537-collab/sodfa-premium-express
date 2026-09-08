@@ -242,7 +242,7 @@ function CheckoutPage() {
 
             <div className="mt-5 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-input)] p-4">
               <p className="text-xs text-[var(--text-muted)]">{t("checkout.instapayHint")}</p>
-              <div className="mt-3 flex items-center justify-between gap-3 rounded-lg bg-black/40 px-3 py-2.5">
+              <div className="mt-3 flex items-center justify-between gap-3 rounded-lg border border-[var(--border-primary)] bg-white px-3 py-2.5">
                 <span className="text-sm font-bold tracking-wider text-[var(--text-primary)]">
                   {storeSettings.instapayNumber}
                 </span>

@@ -96,8 +96,10 @@ function Home() {
               className="group relative overflow-hidden rounded-2xl sodfa-card"
             >
               <SmartImage src={c.image} alt={tl(c.name)} className="aspect-[4/3] w-full" imgClassName="group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-              <span className="absolute bottom-3 text-sm font-bold text-white ltr:left-4 rtl:right-4">{tl(c.name)}</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/70 to-transparent" />
+              <span className="absolute bottom-3 text-sm font-bold text-[var(--text-primary)] ltr:left-4 rtl:right-4">
+                {tl(c.name)}
+              </span>
             </Link>
           ))}
         </div>

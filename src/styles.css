@@ -6,76 +6,77 @@
 
 /* ============================================================
    SODFA — صدفة  |  Design System
-   Premium dark / purple identity. All values are tokens.
+   Premium light / purple identity. All values are tokens.
    ============================================================ */
 
 :root {
-  --sodfa-black: #000000;
+  --sodfa-black: #16101c;
   --sodfa-white: #ffffff;
 
   --sodfa-purple: #8e2aa8;
-  --sodfa-purple-light: #c06bcf;
+  --sodfa-purple-light: #a63dbd;
   --sodfa-purple-dark: #74218f;
   --sodfa-purple-soft: #d69bdf;
 
-  --sodfa-gradient: linear-gradient(135deg, #c06bcf 0%, #9a3caf 45%, #74218f 100%);
+  --sodfa-gradient: linear-gradient(135deg, #b45cc5 0%, #9a3caf 45%, #74218f 100%);
   --sodfa-gradient-horizontal: linear-gradient(90deg, #c06bcf 0%, #9a3caf 50%, #74218f 100%);
   --sodfa-gradient-vertical: linear-gradient(180deg, #c06bcf 0%, #9a3caf 50%, #74218f 100%);
+  --sodfa-gradient-soft: linear-gradient(135deg, #faf6fc 0%, #f4ecf8 60%, #efe4f5 100%);
 
-  --bg-primary: #000000;
-  --bg-secondary: #0a0a0a;
-  --bg-card: #111111;
-  --bg-card-hover: #181818;
-  --bg-elevated: #1c1c1c;
-  --bg-input: #0d0d0d;
+  --bg-primary: #ffffff;
+  --bg-secondary: #faf7fc;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fdfbfe;
+  --bg-elevated: #ffffff;
+  --bg-input: #f8f5fa;
 
-  --border-primary: #272727;
-  --border-secondary: #333333;
+  --border-primary: #ece5f1;
+  --border-secondary: #ddd2e6;
   --border-purple: #8e2aa8;
-  --border-purple-light: #b45cc5;
+  --border-purple-light: #d69bdf;
 
-  --text-primary: #ffffff;
-  --text-secondary: #b8b8b8;
-  --text-muted: #777777;
-  --text-disabled: #4d4d4d;
-  --text-purple: #c06bcf;
+  --text-primary: #1b1220;
+  --text-secondary: #574c62;
+  --text-muted: #8a7f96;
+  --text-disabled: #b9b0c2;
+  --text-purple: #8e2aa8;
 
   --button-primary: #8e2aa8;
   --button-primary-hover: #a63dbd;
   --button-primary-active: #74218f;
-  --button-secondary: #181818;
-  --button-secondary-hover: #242424;
+  --button-secondary: #f7f3fa;
+  --button-secondary-hover: #f1e9f6;
 
-  --success: #22c55e;
-  --success-bg: rgba(34, 197, 94, 0.12);
-  --warning: #f59e0b;
-  --warning-bg: rgba(245, 158, 11, 0.12);
-  --danger: #ef4444;
-  --danger-bg: rgba(239, 68, 68, 0.12);
-  --info: #3b82f6;
-  --info-bg: rgba(59, 130, 246, 0.12);
+  --success: #16a34a;
+  --success-bg: rgba(22, 163, 74, 0.1);
+  --warning: #d97706;
+  --warning-bg: rgba(217, 119, 6, 0.1);
+  --danger: #dc2626;
+  --danger-bg: rgba(220, 38, 38, 0.08);
+  --info: #2563eb;
+  --info-bg: rgba(37, 99, 235, 0.08);
 
-  --purple-bg: rgba(142, 42, 168, 0.12);
-  --purple-bg-hover: rgba(142, 42, 168, 0.18);
-  --purple-border: rgba(142, 42, 168, 0.45);
-  --purple-glow: rgba(142, 42, 168, 0.3);
+  --purple-bg: rgba(142, 42, 168, 0.07);
+  --purple-bg-hover: rgba(142, 42, 168, 0.12);
+  --purple-border: rgba(142, 42, 168, 0.2);
+  --purple-glow: rgba(142, 42, 168, 0.16);
 
-  --sodfa-glow: 0 0 20px rgba(142, 42, 168, 0.25), 0 0 60px rgba(142, 42, 168, 0.1);
-  --sodfa-glow-small: 0 0 15px rgba(142, 42, 168, 0.2);
-  --sodfa-glow-strong: 0 0 30px rgba(142, 42, 168, 0.35), 0 0 80px rgba(142, 42, 168, 0.15);
+  --sodfa-glow: 0 12px 30px -12px rgba(142, 42, 168, 0.35), 0 4px 14px -8px rgba(27, 18, 32, 0.12);
+  --sodfa-glow-small: 0 6px 18px -8px rgba(142, 42, 168, 0.4);
+  --sodfa-glow-strong: 0 20px 50px -16px rgba(142, 42, 168, 0.45), 0 8px 20px -12px rgba(27, 18, 32, 0.14);
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
-  --shadow-lg: 0 15px 45px rgba(0, 0, 0, 0.55);
+  --shadow-sm: 0 1px 2px rgba(27, 18, 32, 0.04), 0 4px 14px -10px rgba(27, 18, 32, 0.16);
+  --shadow-md: 0 8px 26px -14px rgba(27, 18, 32, 0.22);
+  --shadow-lg: 0 22px 50px -22px rgba(27, 18, 32, 0.28);
 
-  --card-background: #111111;
-  --card-border: #272727;
-  --card-hover-border: #8e2aa8;
+  --card-background: #ffffff;
+  --card-border: #ece5f1;
+  --card-hover-border: #d69bdf;
 
-  --input-background: #0d0d0d;
-  --input-border: #272727;
+  --input-background: #f8f5fa;
+  --input-border: #e5dced;
   --input-focus-border: #8e2aa8;
-  --input-focus-glow: 0 0 0 3px rgba(142, 42, 168, 0.15);
+  --input-focus-glow: 0 0 0 3px rgba(142, 42, 168, 0.12);
 
   --accent: #8e2aa8;
   --accent-light: #c06bcf;
@@ -263,7 +264,7 @@
 
 @utility sodfa-badge {
   background: var(--purple-bg);
-  color: var(--sodfa-purple-light);
+  color: var(--sodfa-purple-dark);
   border: 1px solid var(--purple-border);
 }
 
@@ -307,14 +308,14 @@
 @utility sodfa-shimmer {
   position: relative;
   overflow: hidden;
-  background: var(--bg-card);
+  background: #f3edf7;
 
   &::after {
     content: "";
     position: absolute;
     inset: 0;
     transform: translateX(-100%);
-    background: linear-gradient(90deg, transparent, rgba(142, 42, 168, 0.18), transparent);
+    background: linear-gradient(90deg, transparent, rgba(142, 42, 168, 0.1), transparent);
     animation: sodfa-shimmer 1.6s infinite;
   }
 }

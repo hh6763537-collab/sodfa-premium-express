@@ -39,7 +39,7 @@ export function ProductCard({ product, priority }: { product: Product; priority?
           )}
         </div>
         {availability === "out_of_stock" && (
-          <div className="absolute inset-0 grid place-items-center bg-black/65 text-xs font-bold text-[var(--text-secondary)]">
+          <div className="absolute inset-0 grid place-items-center bg-white/75 text-xs font-bold text-[var(--text-primary)] backdrop-blur-sm">
             {t("stock.out")}
           </div>
         )}

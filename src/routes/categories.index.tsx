@@ -33,9 +33,9 @@ function CategoriesPage() {
             className="group relative overflow-hidden rounded-2xl sodfa-card"
           >
             <SmartImage src={c.image} alt={tl(c.name)} className="aspect-[4/3] w-full" imgClassName="group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-white via-white/75 to-transparent" />
             <div className="absolute bottom-3 ltr:left-4 rtl:right-4">
-              <p className="text-sm font-bold text-white">{tl(c.name)}</p>
+              <p className="text-sm font-bold text-[var(--text-primary)]">{tl(c.name)}</p>
               <p className="text-[11px] text-[var(--text-muted)]">
                 {productsByCategory(c.id).length} {t("search.count")}
               </p>
