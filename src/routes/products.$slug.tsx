@@ -274,7 +274,3 @@ function ProductPage() {
     </div>
   );
 }
-
-export function ProductChecked() {
-  return <Check />;
-}
