@@ -25,101 +25,99 @@ export function HeroSlider() {
   const Arrow = isRTL ? ArrowRight : ArrowLeft;
   const ArrowNext = isRTL ? ArrowLeft : ArrowRight;
 
-  return (
-    <section className="relative h-[78vh] min-h-[520px] w-full overflow-hidden bg-black">
-      {slides.map((slide, i) => (
-        <div
-          key={slide.id}
-          className={cn(
-            "absolute inset-0 transition-opacity duration-[1400ms] ease-out",
-            i === index ? "opacity-100" : "pointer-events-none opacity-0",
-          )}
-          aria-hidden={i !== index}
-        >
-          <img
-            src={slide.image}
-            alt={tl(slide.title)}
-            {...(i === 0 ? { fetchPriority: "high" as const } : { loading: "lazy" as const })}
-            className={cn("h-full w-full object-cover", i === index && "animate-ken-burns")}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(142,42,168,0.35),transparent_60%)]" />
-        </div>
-      ))}
+  const active = slides[index];
 
-      <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-4 pb-20 lg:px-8 lg:pb-28">
-        {slides.map(
-          (slide, i) =>
-            i === index && (
-              <div key={slide.id} className="max-w-2xl">
-                <span className="animate-rise inline-flex rounded-full sodfa-badge px-3 py-1 text-[11px] font-bold tracking-[0.2em]">
-                  {tl(slide.label)}
-                </span>
-                <h1
-                  className="animate-rise mt-5 text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-6xl lg:text-7xl"
-                  style={{ animationDelay: "120ms" }}
-                >
-                  {tl(slide.title)}
-                </h1>
-                <p
-                  className="animate-rise mt-4 max-w-lg text-base text-[var(--text-secondary)] sm:text-lg"
-                  style={{ animationDelay: "240ms" }}
-                >
-                  {tl(slide.subtitle)}
-                </p>
-                <div className="animate-rise mt-8 flex flex-wrap gap-3" style={{ animationDelay: "360ms" }}>
-                  <Link
-                    to="/products"
-                    className="rounded-full sodfa-button px-7 py-3.5 text-sm font-bold"
-                  >
-                    {tl(slide.cta)}
-                  </Link>
-                  {slide.secondaryCta && (
-                    <Link
-                      to="/categories"
-                      className="rounded-full sodfa-button-secondary px-7 py-3.5 text-sm font-bold"
-                    >
-                      {tl(slide.secondaryCta)}
-                    </Link>
-                  )}
-                </div>
+  return (
+    <section className="relative overflow-hidden bg-[var(--bg-primary)]">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_0%,rgba(142,42,168,0.10),transparent_55%),radial-gradient(circle_at_85%_15%,rgba(192,107,207,0.10),transparent_55%)]" />
+
+      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-14 lg:grid-cols-2 lg:gap-14 lg:px-8 lg:py-20">
+        {active && (
+          <div key={active.id} className="order-2 lg:order-1">
+            <span className="animate-rise inline-flex rounded-full sodfa-badge px-3.5 py-1.5 text-[11px] font-bold tracking-[0.18em]">
+              {tl(active.label)}
+            </span>
+            <h1
+              className="animate-rise mt-6 text-4xl font-black leading-[1.12] tracking-tight text-[var(--text-primary)] sm:text-5xl lg:text-6xl"
+              style={{ animationDelay: "120ms" }}
+            >
+              {tl(active.title)}
+            </h1>
+            <p
+              className="animate-rise mt-5 max-w-lg text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg"
+              style={{ animationDelay: "240ms" }}
+            >
+              {tl(active.subtitle)}
+            </p>
+            <div className="animate-rise mt-8 flex flex-wrap gap-3" style={{ animationDelay: "360ms" }}>
+              <Link to="/products" className="rounded-full sodfa-button px-7 py-3.5 text-sm font-bold">
+                {tl(active.cta)}
+              </Link>
+              {active.secondaryCta && (
+                <Link to="/categories" className="rounded-full sodfa-button-secondary px-7 py-3.5 text-sm font-bold">
+                  {tl(active.secondaryCta)}
+                </Link>
+              )}
+            </div>
+
+            <div className="mt-10 flex items-center gap-4">
+              <div className="flex gap-2">
+                {slides.map((s, i) => (
+                  <button
+                    key={s.id}
+                    type="button"
+                    onClick={() => go(i)}
+                    aria-label={tl(s.title)}
+                    className={cn(
+                      "h-1.5 rounded-full transition-all duration-500",
+                      i === index
+                        ? "w-10 sodfa-gradient-bg"
+                        : "w-4 bg-[var(--border-secondary)] hover:bg-[var(--sodfa-purple-soft)]",
+                    )}
+                  />
+                ))}
               </div>
-            ),
+              <div className="ms-auto flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => go(index - 1)}
+                  aria-label="Previous"
+                  className="grid h-10 w-10 place-items-center rounded-full border border-[var(--border-primary)] bg-[var(--bg-card)] text-[var(--text-secondary)] transition hover:border-[var(--sodfa-purple)] hover:text-[var(--text-purple)]"
+                >
+                  <Arrow className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => go(index + 1)}
+                  aria-label="Next"
+                  className="grid h-10 w-10 place-items-center rounded-full border border-[var(--border-primary)] bg-[var(--bg-card)] text-[var(--text-secondary)] transition hover:border-[var(--sodfa-purple)] hover:text-[var(--text-purple)]"
+                >
+                  <ArrowNext className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+          </div>
         )}
 
-        <div className="mt-10 flex items-center gap-4">
-          <div className="flex gap-2">
-            {slides.map((s, i) => (
-              <button
-                key={s.id}
-                type="button"
-                onClick={() => go(i)}
-                aria-label={tl(s.title)}
-                className={cn(
-                  "h-1.5 rounded-full transition-all duration-500",
-                  i === index ? "w-10 sodfa-gradient-bg" : "w-4 bg-white/25 hover:bg-white/50",
-                )}
+        <div className="relative order-1 h-[320px] overflow-hidden rounded-[2rem] border border-[var(--border-primary)] shadow-[var(--shadow-lg)] sm:h-[420px] lg:order-2 lg:h-[540px]">
+          {slides.map((slide, i) => (
+            <div
+              key={slide.id}
+              className={cn(
+                "absolute inset-0 transition-opacity duration-[1400ms] ease-out",
+                i === index ? "opacity-100" : "pointer-events-none opacity-0",
+              )}
+              aria-hidden={i !== index}
+            >
+              <img
+                src={slide.image}
+                alt={tl(slide.title)}
+                {...(i === 0 ? { fetchPriority: "high" as const } : { loading: "lazy" as const })}
+                className={cn("h-full w-full object-cover", i === index && "animate-ken-burns")}
               />
-            ))}
-          </div>
-          <div className="ms-auto flex gap-2">
-            <button
-              type="button"
-              onClick={() => go(index - 1)}
-              aria-label="Previous"
-              className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/5 backdrop-blur transition hover:border-[var(--sodfa-purple)]"
-            >
-              <Arrow className="h-4 w-4" />
-            </button>
-            <button
-              type="button"
-              onClick={() => go(index + 1)}
-              aria-label="Next"
-              className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/5 backdrop-blur transition hover:border-[var(--sodfa-purple)]"
-            >
-              <ArrowNext className="h-4 w-4" />
-            </button>
-          </div>
+            </div>
+          ))}
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(142,42,168,0.22),transparent_65%)]" />
         </div>
       </div>
     </section>
